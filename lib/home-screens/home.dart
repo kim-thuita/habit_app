@@ -11,10 +11,32 @@ class Home_Page extends StatefulWidget {
 }
 
 class _Home_PageState extends State<Home_Page> {
+  List List_Tile = [
+    ['Daily Exercise', false],
+    ['Daily Walk', false]
+  ];
+
+  void Onchanged(value, index) {
+    setState(() {
+      List_Tile[index][1] = !List_Tile[index][1];
+    });
+  }
+
+  //floating action button create new task
+  void Newtask() {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog();
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
@@ -32,7 +54,16 @@ class _Home_PageState extends State<Home_Page> {
           ],
         ),
       ),
-      body: List_Tile(),
+      body: ListView.builder(
+        itemCount: List_Tile.length,
+        itemBuilder: (context, index) {
+          return List_TileL(
+            istaskdone: List_Tile[index][1],
+            text: List_Tile[index][0],
+            onchanged: (value) => Onchanged(value, index),
+          );
+        },
+      ),
     );
   }
 }
