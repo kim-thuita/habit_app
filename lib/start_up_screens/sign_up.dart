@@ -3,7 +3,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:habit_app/reusables/button.dart';
 import 'package:habit_app/start_up_screens/sign_in.dart';
+
 import '../home-screens/home.dart';
+
 import '../reusables/text_fields.dart';
 import '../reusables/image_containers.dart';
 
@@ -15,7 +17,6 @@ class Sign_Up_Page extends StatefulWidget {
 }
 
 class _Sign_Up_PageState extends State<Sign_Up_Page> {
-  ///controllers to identify the user from the password
   TextEditingController _username = TextEditingController();
   TextEditingController _password = TextEditingController();
 
@@ -36,7 +37,6 @@ class _Sign_Up_PageState extends State<Sign_Up_Page> {
       ),
       body: Column(
         children: [
-          //icons
           Padding(
             padding: EdgeInsets.symmetric(vertical: 40),
             child: Center(
@@ -46,7 +46,6 @@ class _Sign_Up_PageState extends State<Sign_Up_Page> {
               ),
             ),
           ),
-          //tesxtfields for the username and password
           Reusable_TextField(
             controller: _username,
             prefixIcon: Icon(Icons.verified_user),
@@ -63,7 +62,6 @@ class _Sign_Up_PageState extends State<Sign_Up_Page> {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               GestureDetector(
-                //gesture detector to prompt you to forgot password screen
                 child: Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
@@ -98,7 +96,6 @@ class _Sign_Up_PageState extends State<Sign_Up_Page> {
                   thickness: 0.5,
                 ),
               ),
-              //implementations of other sign in options
               Text("Or Continue with"),
               Expanded(
                 child: Divider(
