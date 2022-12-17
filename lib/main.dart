@@ -9,6 +9,7 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  await Firebase.initializeApp();
   await Hive.initFlutter();
   var openbox = await Hive.openBox('MyBox');
   runApp(

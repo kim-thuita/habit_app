@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:habit_app/reusables/alert_buttons.dart';
 
 class Dialog_Box extends StatelessWidget {
