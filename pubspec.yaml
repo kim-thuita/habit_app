@@ -22,10 +22,8 @@ dependencies:
   hive_flutter: ^1.1.0
   hive_generator: ^2.0.0
   build_runner: ^2.3.2
-<<<<<<< HEAD
   cloud_firestore: ^4.2.0
-=======
->>>>>>> 984cb04ee6c99b950dabb55f960d403699f5b3fa
+
 
 dev_dependencies:
   flutter_test:

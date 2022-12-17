@@ -33,7 +33,7 @@ class _Home_PageState extends State<Home_Page> {
 
   void CheckboxChanged(bool? value, int index) {
     setState(() {
-      db.List_Tile[index] = !db.List_Tile[index];
+      db.List_Tile[index][1] = !db.List_Tile[index][1];
     });
     db.UpdateDatabase();
   }
