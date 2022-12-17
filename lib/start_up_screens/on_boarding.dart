@@ -55,7 +55,7 @@ class _On_Boarding_SreenState extends State<On_Boarding_Sreen> {
                 //dot connector
                 SmoothPageIndicator(controller: _controller, count: 3),
                 onlastpage
-                    ? InkWell(
+                    ? GestureDetector(
                         onTap: () {
                           Navigator.pushReplacement(
                               context,

@@ -18,6 +18,8 @@ class _Login_PageState extends State<Login_Page> {
   TextEditingController _username = TextEditingController();
   TextEditingController _password = TextEditingController();
 
+  void SignInUser() {}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
