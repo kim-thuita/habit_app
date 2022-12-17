@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:habit_app/authentication/auth_page.dart';
 import 'package:habit_app/start_up_screens/intro_screen2.dart';
-import 'package:habit_app/start_up_screens/sign_in.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'intro_screen1.dart';
@@ -58,9 +58,11 @@ class _On_Boarding_SreenState extends State<On_Boarding_Sreen> {
                     ? GestureDetector(
                         onTap: () {
                           Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => Login_Page()));
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Auth_Page(),
+                            ),
+                          );
                         },
                         child: Text(
                           "done",
@@ -73,7 +75,7 @@ class _On_Boarding_SreenState extends State<On_Boarding_Sreen> {
                     : GestureDetector(
                         onTap: () => _controller.nextPage(
                             duration: Duration(milliseconds: 200),
-                            curve: Curves.easeIn),
+                            curve: Curves.easeInCirc),
                         child: Text(
                           "Next",
                           style: GoogleFonts.openSans(

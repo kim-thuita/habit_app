@@ -19,16 +19,19 @@ class Reusable_TextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(10.0),
-      child: TextField(
-        textAlign: TextAlign.center,
-        controller: controller,
-        obscureText: Obscuretext,
-        decoration: InputDecoration(
-          hintText: hinttext,
-          prefixIcon: prefixIcon,
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(20),
-            borderSide: BorderSide(color: Colors.black),
+      child: SizedBox(
+        width: MediaQuery.of(context).size.width * 0.9,
+        child: TextField(
+          textAlign: TextAlign.center,
+          controller: controller,
+          obscureText: Obscuretext,
+          decoration: InputDecoration(
+            hintText: hinttext,
+            prefixIcon: prefixIcon,
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(20),
+              borderSide: BorderSide(color: Colors.black),
+            ),
           ),
         ),
       ),

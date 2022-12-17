@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -68,6 +69,10 @@ class _Home_PageState extends State<Home_Page> {
     db.UpdateDatabase();
   }
 
+  SignOut() async {
+    FirebaseAuth.instance.signOut();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -85,9 +90,9 @@ class _Home_PageState extends State<Home_Page> {
               ),
             ),
             IconButton(
-              onPressed: () {},
+              onPressed: SignOut,
               icon: FaIcon(
-                FontAwesomeIcons.user,
+                FontAwesomeIcons.signOut,
                 color: Colors.black,
               ),
             ),

@@ -1,16 +1,18 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:habit_app/reusables/button.dart';
 import 'package:habit_app/start_up_screens/sign_in.dart';
-
 import '../home-screens/home.dart';
-
 import '../reusables/text_fields.dart';
 import '../reusables/image_containers.dart';
 
 class Sign_Up_Page extends StatefulWidget {
-  const Sign_Up_Page({Key? key}) : super(key: key);
+  final VoidCallback showloginpage;
+
+  const Sign_Up_Page({super.key, required this.showloginpage});
 
   @override
   State<Sign_Up_Page> createState() => _Sign_Up_PageState();
@@ -19,6 +21,18 @@ class Sign_Up_Page extends StatefulWidget {
 class _Sign_Up_PageState extends State<Sign_Up_Page> {
   TextEditingController _username = TextEditingController();
   TextEditingController _password = TextEditingController();
+
+  @override
+  void dispose() {
+    super.dispose();
+    _username.dispose();
+    _password.dispose();
+  }
+
+  void SignUp() async {
+    await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: _username.text, password: _password.text);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -80,12 +94,7 @@ class _Sign_Up_PageState extends State<Sign_Up_Page> {
             height: 40,
           ),
           Button_Reusables(
-            ontap: () => Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => Home_Page(),
-              ),
-            ),
+            ontap: SignUp,
             text: 'Sign UP',
           ),
           SizedBox(height: 20),
@@ -128,7 +137,9 @@ class _Sign_Up_PageState extends State<Sign_Up_Page> {
                 onTap: () => Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => Login_Page(),
+                    builder: (context) => Login_Page(
+                      showregisterpage: () {},
+                    ),
                   ),
                 ),
                 child: Text(
