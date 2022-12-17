@@ -86,12 +86,22 @@ class _Home_PageState extends State<Home_Page> {
             ),
             IconButton(
               onPressed: () {},
-              icon: FaIcon(FontAwesomeIcons.user),
+              icon: FaIcon(
+                FontAwesomeIcons.user,
+                color: Colors.black,
+              ),
             ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(onPressed: CreateNewTask),
+      floatingActionButton: FloatingActionButton(
+          backgroundColor: Colors.amberAccent,
+          child: Icon(
+            Icons.add,
+            size: 30,
+            color: Colors.red,
+          ),
+          onPressed: CreateNewTask),
       body: ListView.builder(
         itemCount: db.List_Tile.length,
         itemBuilder: (context, index) {

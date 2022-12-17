@@ -37,31 +37,23 @@ class List_TileL extends StatelessWidget {
             borderRadius: BorderRadius.circular(20),
             border: Border.all(color: Colors.black),
           ),
-          child: Container(
-            padding: EdgeInsets.all(20),
-            decoration: BoxDecoration(
-              color: Colors.yellow[250],
-              borderRadius: BorderRadius.circular(20),
-              border: Border.all(color: Colors.black),
-            ),
-            child: Row(
-              children: [
-                Text(
-                  text,
-                  style: TextStyle(
-                      decoration: istaskdone
-                          ? TextDecoration.lineThrough
-                          : TextDecoration.none),
-                ),
+          child: Row(
+            children: [
+              Text(
+                text,
+                style: TextStyle(
+                    decoration: istaskdone
+                        ? TextDecoration.lineThrough
+                        : TextDecoration.none),
+              ),
 
-                ///checkbox
-                Checkbox(
-                    activeColor: Colors.black,
-                    checkColor: Colors.red,
-                    value: istaskdone,
-                    onChanged: onchanged)
-              ],
-            ),
+              ///checkbox
+              Checkbox(
+                  activeColor: Colors.black,
+                  checkColor: Colors.red,
+                  value: istaskdone,
+                  onChanged: onchanged)
+            ],
           ),
         ),
       ),
