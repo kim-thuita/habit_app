@@ -3,9 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:habit_app/data/database.dart';
+import 'package:habit_app/home-screens/profile.dart';
+import 'package:habit_app/home-screens/searchpage.dart';
 import 'package:habit_app/home-screens/to_do_notetaker.dart';
 import 'package:habit_app/reusables/alert_dialog.dart';
 import 'package:hive/hive.dart';
+
+import '../reusables/List_Tile_Reusable.dart';
 
 class Home_Page extends StatefulWidget {
   const Home_Page({Key? key}) : super(key: key);
@@ -16,6 +20,8 @@ class Home_Page extends StatefulWidget {
 
 class _Home_PageState extends State<Home_Page> {
   final _mybox = Hive.box('mybox');
+
+  User? user = FirebaseAuth.instance.currentUser;
 
   @override
   void initState() {
@@ -47,6 +53,7 @@ class _Home_PageState extends State<Home_Page> {
       _controller.clear();
     });
     db.UpdateDatabase();
+    Navigator.pop(context);
   }
 
   void CreateNewTask() {
@@ -78,24 +85,51 @@ class _Home_PageState extends State<Home_Page> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        elevation: 0,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        centerTitle: true,
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => SearchPage()));
+              },
+              icon: FaIcon(FontAwesomeIcons.searchengin))
+        ],
+        title: Text(
+          "Be Better",
+          style: GoogleFonts.openSans(
+              color: Colors.black, fontWeight: FontWeight.bold),
+        ),
+      ),
+      drawer: Drawer(
+        backgroundColor: Colors.grey[400],
+        child: ListView(
+          padding: EdgeInsets.symmetric(vertical: 50),
           children: [
+            Icon(
+              Icons.account_circle,
+              color: Colors.black,
+              size: 140,
+            ),
+            SizedBox(height: 40),
             Text(
-              "Be Better",
-              style: GoogleFonts.openSans(
-                color: Colors.black45,
-                fontSize: 20,
-              ),
+                style: GoogleFonts.openSans(color: Colors.black),
+                textAlign: TextAlign.center,
+                "Signed in as ${user!.email}"),
+            SizedBox(height: 20),
+            Divider(
+              thickness: 5,
+              color: Colors.blueGrey,
             ),
-            IconButton(
-              onPressed: SignOut,
-              icon: FaIcon(
-                FontAwesomeIcons.signOut,
-                color: Colors.black,
-              ),
+            reusable_ListTile(
+              icon: Icon(Icons.account_circle),
+              text: 'User Profile',
+              ontap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Profile_User()));
+              },
             ),
+            reusable_ListTile(
+                ontap: SignOut, icon: Icon(Icons.logout), text: 'Logout')
           ],
         ),
       ),

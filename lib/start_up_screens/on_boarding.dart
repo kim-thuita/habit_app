@@ -15,7 +15,7 @@ class _On_Boarding_SreenState extends State<On_Boarding_Sreen> {
   //controller to kep track of which page we are in
   PageController _controller = PageController();
 
-  //boolean to identify wheteher you are at the last screen or not
+  //boolean to identify whether you are at the last screen or not
   bool onlastpage = false;
   @override
   Widget build(BuildContext context) {
@@ -26,9 +26,11 @@ class _On_Boarding_SreenState extends State<On_Boarding_Sreen> {
             controller: _controller,
             //setting boolean state to true if its equal to two
             onPageChanged: (index) {
-              setState(() {
-                onlastpage = (index == 2);
-              });
+              setState(
+                () {
+                  onlastpage = (index == 2);
+                },
+              );
             },
             children: [
               Intro_Screen1(),
