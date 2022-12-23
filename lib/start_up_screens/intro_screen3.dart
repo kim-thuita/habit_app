@@ -6,7 +6,9 @@ class Intro_Screen3 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      alignment: Alignment.center,
       color: Colors.grey.shade400,
+      child: Image.asset("images/two_people.png"),
     );
   }
 }
