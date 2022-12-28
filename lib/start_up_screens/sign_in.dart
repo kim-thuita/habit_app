@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:habit_app/reusables/button.dart';
 import 'package:habit_app/start_up_screens/sign_up.dart';
+import '../authentication/auth_services.dart';
 import '../reusables/image_containers.dart';
 import '../reusables/text_fields.dart';
 
@@ -164,9 +165,11 @@ class _Login_PageState extends State<Login_Page> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 image_containers(
+                  onTap: () => AuthService().Signin_With_Google(),
                   icon: FaIcon(FontAwesomeIcons.google),
                 ),
-                image_containers(icon: FaIcon(FontAwesomeIcons.twitter))
+                image_containers(
+                    onTap: () {}, icon: FaIcon(FontAwesomeIcons.twitter))
               ],
             ),
             SizedBox(height: 20),
